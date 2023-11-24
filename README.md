@@ -8,7 +8,7 @@ We provide the reproduction of WinCLIP [here](https://github.com/zqhang/WinCLIP-
 ![Overview of AnomalyCLIP](./assets/overview.png)
 
 ## Analysis of different text prompt templates
-![analysis](./assets/analysis of different text prompt templates.png) 
+![analysis](./assets/analysis.png) 
 
 ## Main results
 
