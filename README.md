@@ -1,4 +1,4 @@
-# AnomalyCLIP: Object-agnostic Prompt Learning for Zero-shot Anomaly Detection
+# [AnomalyCLIP: Object-agnostic Prompt Learning for Zero-shot Anomaly Detection](https://arxiv.org/pdf/2310.18961.pdf)
 We will release the code once the paper is accepted.
 
 We provide the reproduction of WinCLIP [here](https://github.com/zqhang/WinCLIP-pytorch)
@@ -29,3 +29,16 @@ We provide the reproduction of WinCLIP [here](https://github.com/zqhang/WinCLIP-
 ![skin](./assets/skin.png) 
 
 ![brain](./assets/brain.png) 
+
+## BibTex Citation
+
+If you find this paper and repository useful, please cite our paper.
+
+```
+@article{zhou2023anomalyclip,
+  title={AnomalyCLIP: Object-agnostic Prompt Learning for Zero-shot Anomaly Detection},
+  author={Zhou, Qihang and Pang, Guansong and Tian, Yu and He, Shibo and Chen, Jiming},
+  journal={arXiv preprint arXiv:2310.18961},
+  year={2023}
+}
+```
