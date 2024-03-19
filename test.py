@@ -176,9 +176,9 @@ if __name__ == '__main__':
     # paths
     parser.add_argument("--data_path", type=str, default="./data/visa", help="path to test dataset")
     parser.add_argument("--save_path", type=str, default='./results/', help='path to save results')
+    parser.add_argument("--checkpoint_path", type=str, default='./checkpoint/', help='path to checkpoint')
     # model
     parser.add_argument("--dataset", type=str, default='mvtec')
-    parser.add_argument("--model", type=str)
     parser.add_argument("--features_list", type=int, nargs="+", default=[6, 12, 18, 24], help="features used")
     parser.add_argument("--image_size", type=int, default=518, help="image size")
     parser.add_argument("--depth", type=int, default=9, help="image size")
