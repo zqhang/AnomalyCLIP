@@ -73,10 +73,10 @@ bash train.sh
 If you find this paper and repository useful, please cite our paper.
 
 ```
-@article{zhou2023anomalyclip,
+@article{zhou2024anomalyclip,
   title={AnomalyCLIP: Object-agnostic Prompt Learning for Zero-shot Anomaly Detection},
   author={Zhou, Qihang and Pang, Guansong and Tian, Yu and He, Shibo and Chen, Jiming},
   journal={The Twelfth International Conference on Learning Representations},
-  year={2023}
+  year={2024}
 }
 ```
