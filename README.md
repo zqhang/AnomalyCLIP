@@ -1,4 +1,4 @@
-# FairSeg 
+# AnomalyCLIP 
 > [**ICLR 24**] [**AnomalyCLIP: Object-agnostic Prompt Learning for Zero-shot Anomaly Detection**](https://arxiv.org/pdf/2310.18961.pdf)
 >
 > by [Qihang Zhou*](https://shiminxst.github.io/index.html), [Guansong Pang*](https://www.guansongpang.com/),  [Yu Tian](https://yutianyt.com/), Shibo He, Jiming Chen.
