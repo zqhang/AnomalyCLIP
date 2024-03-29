@@ -1,5 +1,5 @@
 # [AnomalyCLIP: Object-agnostic Prompt Learning for Zero-shot Anomaly Detection](https://arxiv.org/pdf/2310.18961.pdf) (ICLR 2024)
-We will release the code once the paper is accepted. 
+
 
 ## Updates
 
