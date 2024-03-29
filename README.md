@@ -19,25 +19,6 @@ In this paper we introduce a novel approach, namely AnomalyCLIP, to adapt CLIP f
 ## Analysis of different text prompt templates
 ![analysis](./assets/analysis.png) 
 
-## Main results
-
-### Industrial dataset
-![industrial](./assets/Industrial.png) 
-
-
-### Medical dataset
-![medical](./assets/medical.png) 
-
-
-## Visualization
-
-![hazelnut](./assets/hazelnut.png) 
-
-![capusle](./assets/capusle.png) 
-
-![skin](./assets/skin.png) 
-
-![brain](./assets/brain.png) 
 
 ## How to Run
 ### Prepare your dataset
@@ -68,10 +49,32 @@ bash train.sh
 ```
 
 
+## Main results
+
+### Industrial dataset
+![industrial](./assets/Industrial.png) 
+
+
+### Medical dataset
+![medical](./assets/medical.png) 
+
+
+## Visualization
+
+![hazelnut](./assets/hazelnut.png) 
+
+![capusle](./assets/capusle.png) 
+
+![skin](./assets/skin.png) 
+
+![brain](./assets/brain.png) 
+
+
 ## We provide the reproduction of WinCLIP [here](https://github.com/zqhang/WinCLIP-pytorch)
 
 
 * We thank for the code repository: [open_clip](https://github.com/mlfoundations/open_clip), [DualCoOp](https://github.com/sunxm2357/DualCoOp), [CLIP_Surgery](https://github.com/xmed-lab/CLIP_Surgery), and [VAND](https://github.com/ByChelsea/VAND-APRIL-GAN/tree/master).
+
 ## BibTex Citation
 
 If you find this paper and repository useful, please cite our paper.
