@@ -81,10 +81,12 @@ bash train.sh
 If you find this paper and repository useful, please cite our paper.
 
 ```
-@article{zhou2024anomalyclip,
-  title={AnomalyCLIP: Object-agnostic Prompt Learning for Zero-shot Anomaly Detection},
-  author={Zhou, Qihang and Pang, Guansong and Tian, Yu and He, Shibo and Chen, Jiming},
-  journal={The Twelfth International Conference on Learning Representations},
-  year={2024}
+@inproceedings{
+zhou2024anomalyclip,
+title={Anomaly{CLIP}: Object-agnostic Prompt Learning for Zero-shot Anomaly Detection},
+author={Qihang Zhou and Guansong Pang and Yu Tian and Shibo He and Jiming Chen},
+booktitle={The Twelfth International Conference on Learning Representations},
+year={2024},
+url={https://openreview.net/forum?id=buC4E91xZE}
 }
 ```
