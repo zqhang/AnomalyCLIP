@@ -1,6 +1,10 @@
+
+# %load mvtec.py 
+# %%writefile mvtec.py 
+# Cell magic function starts with double %, and should be placed at the very first line of a cell
+
 import os
 import json
-
 
 class MVTecSolver(object):
     CLSNAMES = [
@@ -25,13 +29,13 @@ class MVTecSolver(object):
                 for specie in species:
                     is_abnormal = True if specie not in ['good'] else False
                     img_names = os.listdir(f'{cls_dir}/{phase}/{specie}')
-                    mask_names = os.listdir(f'{cls_dir}/groundtruth/{specie}') if is_abnormal else None
+                    mask_names = os.listdir(f'{cls_dir}/ground_truth/{specie}') if is_abnormal else None
                     img_names.sort()
                     mask_names.sort() if mask_names is not None else None
                     for idx, img_name in enumerate(img_names):
                         info_img = dict(
                             img_path=f'{cls_name}/{phase}/{specie}/{img_name}',
-                            mask_path=f'{cls_name}/groundtruth/{specie}/{mask_names[idx]}' if is_abnormal else '',
+                            mask_path=f'{cls_name}/ground_truth/{specie}/{mask_names[idx]}' if is_abnormal else '',
                             cls_name=cls_name,
                             specie_name=specie,
                             anomaly=1 if is_abnormal else 0,
@@ -47,5 +51,5 @@ class MVTecSolver(object):
             f.write(json.dumps(info, indent=4) + "\n")
         print('normal_samples', normal_samples, 'anomaly_samples', anomaly_samples)
 if __name__ == '__main__':
-    runner = MVTecSolver(root='/remote-home/iot_zhouqihang/data/mvdataset')
+    runner = MVTecSolver(root='/home/alireza/datasets/mvdataset')
     runner.run()

@@ -12,6 +12,9 @@ import numpy as np
 import os
 import random
 from utils import get_transform
+
+import torch.distributed as dist
+
 def setup_seed(seed):
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
@@ -21,7 +24,6 @@ def setup_seed(seed):
     torch.backends.cudnn.benchmark = False
 
 def train(args):
-
     logger = get_logger(args.save_path)
 
     preprocess, target_transform = get_transform(args)
@@ -29,24 +31,28 @@ def train(args):
 
     AnomalyCLIP_parameters = {"Prompt_length": args.n_ctx, "learnabel_text_embedding_depth": args.depth, "learnabel_text_embedding_length": args.t_n_ctx}
 
+    devices = [0, 1] # [0, 1, 2, 3]
+    print(f"device ids: {devices}")
     model, _ = AnomalyCLIP_lib.load("ViT-L/14@336px", device=device, design_details = AnomalyCLIP_parameters)
+    model = torch.nn.DataParallel(model.cuda(), device_ids=devices)
     model.eval()
 
     train_data = Dataset(root=args.train_data_path, transform=preprocess, target_transform=target_transform, dataset_name = args.dataset)
     train_dataloader = torch.utils.data.DataLoader(train_data, batch_size=args.batch_size, shuffle=True)
 
-  ##########################################################################################
-    prompt_learner = AnomalyCLIP_PromptLearner(model.to("cpu"), AnomalyCLIP_parameters)
+    ##########################################################################################
+    prompt_learner = AnomalyCLIP_PromptLearner(model.module.to("cpu"), AnomalyCLIP_parameters)
+    prompt_learner = torch.nn.DataParallel(prompt_learner.cuda(), device_ids=devices)
     prompt_learner.to(device)
     model.to(device)
-    model.visual.DAPM_replace(DPAM_layer = 20)
+    model.module.visual.DAPM_replace(DPAM_layer = 20)
+
     ##########################################################################################
     optimizer = torch.optim.Adam(list(prompt_learner.parameters()), lr=args.learning_rate, betas=(0.5, 0.999))
 
     # losses
     loss_focal = FocalLoss()
     loss_dice = BinaryDiceLoss()
-    
     
     model.eval()
     prompt_learner.train()
@@ -69,14 +75,15 @@ def train(args):
                 # DPAM_layer represents the number of layer refined by DPAM from top to bottom
                 # DPAM_layer = 1, no DPAM is used
                 # DPAM_layer = 20 as default
-                image_features, patch_features = model.encode_image(image, args.features_list, DPAM_layer = 20)
+                image_features, patch_features = model.module.encode_image(image, args.features_list, DPAM_layer = 20)
                 image_features = image_features / image_features.norm(dim=-1, keepdim=True)
                     
            ####################################
             prompts, tokenized_prompts, compound_prompts_text = prompt_learner(cls_id = None)
-            text_features = model.encode_text_learn(prompts, tokenized_prompts, compound_prompts_text).float()
+            text_features = model.module.encode_text_learn(prompts, tokenized_prompts, compound_prompts_text).float()
             text_features = torch.stack(torch.chunk(text_features, dim = 0, chunks = 2), dim = 1)
             text_features = text_features/text_features.norm(dim=-1, keepdim=True)
+
             # Apply DPAM surgery
             text_probs = image_features.unsqueeze(1) @ text_features.permute(0, 2, 1)
             text_probs = text_probs[:, 0, ...]/0.07
@@ -113,21 +120,20 @@ def train(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser("AnomalyCLIP", add_help=True)
-    parser.add_argument("--train_data_path", type=str, default="./data/visa", help="train dataset path")
+    parser.add_argument("--train_data_path", type=str, default="/home/alireza/datasets/mvtec", help="train dataset path")
     parser.add_argument("--save_path", type=str, default='./checkpoint', help='path to save results')
-
 
     parser.add_argument("--dataset", type=str, default='mvtec', help="train dataset name")
 
     parser.add_argument("--depth", type=int, default=9, help="image size")
     parser.add_argument("--n_ctx", type=int, default=12, help="zero shot")
-    parser.add_argument("--t_n_ctx", type=int, default=4, help="zero shot")
+    parser.add_argument("--t_n_ctx", type=int, default=4, help="zero shot") 
     parser.add_argument("--feature_map_layer", type=int, nargs="+", default=[0, 1, 2, 3], help="zero shot")
     parser.add_argument("--features_list", type=int, nargs="+", default=[6, 12, 18, 24], help="features used")
 
     parser.add_argument("--epoch", type=int, default=15, help="epochs")
     parser.add_argument("--learning_rate", type=float, default=0.001, help="learning rate")
-    parser.add_argument("--batch_size", type=int, default=8, help="batch size")
+    parser.add_argument("--batch_size", type=int, default=12, help="batch size")
     parser.add_argument("--image_size", type=int, default=518, help="image size")
     parser.add_argument("--print_freq", type=int, default=1, help="print frequency")
     parser.add_argument("--save_freq", type=int, default=1, help="save frequency")

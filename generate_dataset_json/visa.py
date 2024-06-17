@@ -1,3 +1,7 @@
+
+# %load visa.py
+# os.chdir('/kaggle/working/AnomalyCLIP/generate_dataset_json')  # Make sure to replace 'path/to/your/directory' with the actual path
+
 import os
 import json
 import pandas as pd
@@ -50,5 +54,5 @@ class VisASolver(object):
 
 
 if __name__ == '__main__':
-    runner = VisASolver(root='/remote-home/iot_zhouqihang/data/Visa')
+    runner = VisASolver(root='/home/alireza//datasets/visa')
     runner.run()
