@@ -1,4 +1,4 @@
-# AnomalyCLIP 
+# AnomalyCLIP (Train once and test other)
 > [**ICLR 24**] [**AnomalyCLIP: Object-agnostic Prompt Learning for Zero-shot Anomaly Detection**](https://arxiv.org/pdf/2310.18961.pdf)
 >
 > by [Qihang Zhou*](), [Guansong Pang*](https://www.guansongpang.com/),  [Yu Tian](https://yutianyt.com/), [Shibo He](https://scholar.google.com/citations?hl=zh-CN&user=5GOcb4gAAAAJ&view_op=list_works&sortby=pubdate), [Jiming Chen](https://scholar.google.com/citations?user=zK9tvo8AAAAJ&hl=zh-CN).
