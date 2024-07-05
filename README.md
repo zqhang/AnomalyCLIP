@@ -55,7 +55,7 @@ bash train.sh
 ```
 
 
-## Main results
+## Main results (We test all datasets by training once on MVTec AD. For MVTec AD, AnomalyCLIP is trained on VisA.)
 
 ### Industrial dataset
 ![industrial](./assets/Industrial.png) 
