@@ -31,6 +31,7 @@ Download the dataset below:
 * Medical Domain:
 [HeadCT](https://www.kaggle.com/datasets/felipekitamura/head-ct-hemorrhage), [BrainMRI](https://www.kaggle.com/datasets/navoneel/brain-mri-images-for-brain-tumor-detection), [Br35H](https://www.kaggle.com/datasets/ahmedhamada0/brain-tumor-detection), [COVID-19](https://www.kaggle.com/datasets/tawsifurrahman/covid19-radiography-database), [ISIC](https://isic-challenge-data.s3.amazonaws.com/2016/ISBI2016_ISIC_Part1_Test_Data.zip), [CVC-ColonDB](https://figshare.com/articles/figure/Polyp_DataSet_zip/21221579), [CVC-ClinicDB](https://figshare.com/articles/figure/Polyp_DataSet_zip/21221579), [Kvasir](https://figshare.com/articles/figure/Polyp_DataSet_zip/21221579), [Endo](https://drive.google.com/file/d/1LNpLkv5ZlEUzr_RPN5rdOHaqk0SkZa3m/view), [TN3K](https://github.com/haifangong/TRFE-Net-for-thyroid-nodule-segmentation?tab=readme-ov-file).
 
+* Google Drive link (frequently requested dataset): [SDD](https://drive.google.com/drive/folders/1oqaxUZYi44jlLT4WtT6D5T6onPTNZXsu?usp=drive_link), [Br35H](https://drive.google.com/file/d/1l9XODMBm4X23K70LtpxAxgoaBbNzr4Nc/view?usp=drive_link), [COVID-19](https://drive.google.com/file/d/1ECwI8DJmhEtcVHatxCAdFqnSmXs35WFL/view?usp=drive_link)
 ### Generate the dataset JSON
 Take MVTec AD for example
 ```bash
