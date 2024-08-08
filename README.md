@@ -7,6 +7,7 @@
 ## Updates
 
 - **03.19.2024**: Code has been released !!!
+- **08.08.2024**: Update the code for testing one image.
 
 ## Introduction 
 Zero-shot anomaly detection (ZSAD) requires detection models trained using auxiliary data to detect anomalies without any training sample in a target dataset. It is a crucial task when training data is not accessible due to various concerns, e.g., data privacy, yet it is challenging since the models need to generalize to anomalies across different domains where the appearance of foreground objects, abnormal regions, and background features, such as defects/tumors on different products/organs, can vary significantly. Recently large pre-trained vision-language models (VLMs), such as CLIP,
