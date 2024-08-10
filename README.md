@@ -34,10 +34,55 @@ Download the dataset below:
 
 * Google Drive link (frequently requested dataset): [SDD](https://drive.google.com/drive/folders/1oqaxUZYi44jlLT4WtT6D5T6onPTNZXsu?usp=drive_link), [Br35H](https://drive.google.com/file/d/1l9XODMBm4X23K70LtpxAxgoaBbNzr4Nc/view?usp=drive_link), [COVID-19](https://drive.google.com/file/d/1ECwI8DJmhEtcVHatxCAdFqnSmXs35WFL/view?usp=drive_link)
 ### Generate the dataset JSON
-Take MVTec AD for example
+Take MVTec AD for example (With multiple anomaly categories)
+
+Structure of MVTec Folder:
+```
+mvtec/
+│
+├── meta.json
+│
+├── bottle/
+│   ├── ground_truth/
+│   │   ├── broken_large/
+│   │   │   └── 000_mask.png
+|   |   |   └── ...
+│   │   └── ...
+│   └── test/
+│       ├── broken_large/
+│       │   └── 000.png
+|       |   └── ...
+│       └── ...
+│   
+└── ...
+```
+
 ```bash
 cd generate_dataset_json
 python mvtec.py
+```
+
+Take SDD for example (With single anomaly category)
+
+Structure of SDD Folder:
+```
+SDD/
+│
+├── electrical_commutators/
+│   └── test/
+│       ├── defect/
+│       │   └── kos01_Part5_0.png
+|       |   └── ...
+│       └── good/
+│           └── kos01_Part0_0.png
+│           └── ...  
+│
+└── meta.json
+```
+
+```bash
+cd generate_dataset_json
+python SDD.py
 ```
 Select the corresponding script and run it (we provide all scripts for datasets that AnomalyCLIP reported). The generated JSON stores all the information that AnomalyCLIP needs. 
 
