@@ -275,9 +275,9 @@ class Transformer(nn.Module):
             x = r(x)
             if idx in out_layers:
                 if isinstance(x, list):
-                    out_tokens.append(x[1])
+                    out_tokens.append(x[1].clone())
                 else:
-                    out_tokens.append(x)
+                    out_tokens.append(x.clone())
 
         return [x, x], out_tokens
 
@@ -290,9 +290,9 @@ class Transformer(nn.Module):
             # print("out_layers", out_layers, idx)
             if idx in out_layers:
                 if isinstance(x, list):
-                    out_tokens.append(x[0])
+                    out_tokens.append(x[0].clone())
                 else:
-                    out_tokens.append(x)
+                    out_tokens.append(x.clone())
         return x, out_tokens
 
     def forward(self, x: torch.Tensor, out_layers = [6, 12, 18, 24], DPAM_layer = None, ffn = False):
