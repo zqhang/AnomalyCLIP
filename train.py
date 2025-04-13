@@ -46,7 +46,8 @@ def train(args):
     # losses
     loss_focal = FocalLoss()
     loss_dice = BinaryDiceLoss()
-    
+
+    lam = 4
     
     model.eval()
     prompt_learner.train()
@@ -98,6 +99,7 @@ def train(args):
                 loss += loss_dice(similarity_map_list[i][:, 1, :, :], gt)
                 loss += loss_dice(similarity_map_list[i][:, 0, :, :], 1-gt)
 
+            loss = lam * loss
             optimizer.zero_grad()
             (loss+image_loss).backward()
             optimizer.step()
