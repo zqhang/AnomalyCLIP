@@ -6,6 +6,7 @@
 
 ## Updates
 
+- **04.13.2025**: We fixed the bug of identical local outputs from multiple intermediate feature maps. We updated the illustration of local features, as raised in issue 18, and the adaptation of the text encoder, as discussed in issue 75, in the new arXiv version. We thank the community, especially Jonah Weiss and fangfangzk, for their efforts in improving AnomalyCLIP.
 - **03.19.2024**: Code has been released !!!
 - **08.08.2024**: Update the code for testing one image.
 
