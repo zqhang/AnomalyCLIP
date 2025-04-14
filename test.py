@@ -100,6 +100,8 @@ def test(args):
                     similarity, _ = AnomalyCLIP_lib.compute_similarity(patch_feature, text_features[0])
                     similarity_map = AnomalyCLIP_lib.get_similarity_map(similarity[:, 1:, :], args.image_size)
                     anomaly_map = (similarity_map[...,1] + 1 - similarity_map[...,0])/2.0
+                    # The following code is equivalent. 
+                    # anomaly_map = similarity_map[...,1] 
                     anomaly_map_list.append(anomaly_map)
 
             anomaly_map = torch.stack(anomaly_map_list)
