@@ -50,7 +50,16 @@ def test(args):
 
     AnomalyCLIP_parameters = {"Prompt_length": args.n_ctx, "learnabel_text_embedding_depth": args.depth, "learnabel_text_embedding_length": args.t_n_ctx}
     
-    model, _ = AnomalyCLIP_lib.load("ViT-L/14@336px", device=device, design_details = AnomalyCLIP_parameters)
+    #model, _ = AnomalyCLIP_lib.load("ViT-L/14@336px", device=device, design_details = AnomalyCLIP_parameters)
+    
+    model, _ = AnomalyCLIP_lib.load(
+        "ViT-L/14@336px",
+        device=device,
+        design_details=AnomalyCLIP_parameters,
+        download_root=os.path.expanduser("~/.cache/clip")
+    )
+
+
     model.eval()
 
     preprocess, target_transform = get_transform(args)
